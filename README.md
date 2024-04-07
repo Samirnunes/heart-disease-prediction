@@ -36,7 +36,7 @@ The target, `disease_degree`, is clearly imbalanced, as we can see in the follow
 
 The notebook `data_analysis` shows an initial data analysis used to understanding the basic about the dataset: the univariate distribuitions and the correlation between each variable and the target. 
 
-For example, the correlations graph is showed below:
+For example, the correlations heatmap is showed below:
 
 <p align="center">
     <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
