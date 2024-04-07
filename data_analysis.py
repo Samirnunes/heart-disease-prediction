@@ -1,5 +1,11 @@
 import pandas as pd
+import seaborn as sns
 import matplotlib.pyplot as plt
+
+def plot_correlations(train_data):
+    plt.figure(figsize=(12,8))
+    sns.heatmap(train_data.corr(), cmap="flare", annot=True)
+    plt.show()
 
 def continuous_univariate_analysis(train_data, column):
     analysis_data = train_data[[column]]
