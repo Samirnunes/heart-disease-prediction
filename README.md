@@ -29,7 +29,7 @@ The columns are:
 The target, `disease_degree`, is clearly imbalanced, as we can see in the following graph:
 
 <p align="center">
-    <img width="400" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/disease_degree.png" alt="Material Bread logo">
+    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/disease_degree.png" alt="Material Bread logo">
 <p>
 
 ## Results
