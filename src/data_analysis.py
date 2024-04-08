@@ -8,7 +8,7 @@ def plot_correlations(train_data):
     plt.show()
 
 def continuous_univariate_analysis(train_data, column):
-    analysis_data = train_data[[column]]
+    analysis_data = train_data[[column]].fillna(-1)
     fig, axs = plt.subplots(1,2)
     axs[0].hist(analysis_data, color="darkblue")
     axs[1].boxplot(analysis_data)
