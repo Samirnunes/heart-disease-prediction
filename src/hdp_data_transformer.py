@@ -20,10 +20,8 @@ class HdpDataTransformer():
     def fit_impute(self, X_train, X_test):
         X_train.loc[:, self.__numerical] = self.__numerical_imputer.fit_transform(X_train.loc[:, self.__numerical])
         X_test.loc[:, self.__numerical] = self.__numerical_imputer.transform(X_test.loc[:, self.__numerical])
-        
         X_train.loc[:, self.__categorical] = self.__categorical_imputer.fit_transform(X_train.loc[:, self.__categorical])
         X_test.loc[:, self.__categorical] = self.__categorical_imputer.transform(X_test.loc[:, self.__categorical])
-        
         return X_train, X_test
     
     def fit_scale(self, X_train, X_test):
