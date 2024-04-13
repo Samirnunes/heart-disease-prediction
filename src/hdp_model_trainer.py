@@ -1,4 +1,5 @@
 from imblearn.over_sampling import SMOTE
+from joblib import dump, load
 
 class HdpModelTrainer():
     def __init__(self, model, random_state=100):
@@ -6,11 +7,13 @@ class HdpModelTrainer():
         self.__model = model
         self.is_trained = False
         
-    def save_model(self):
-        """
-        TODO
-        """
-        pass
+    def save_model(self, path="model.joblib"):
+        if self.is_trained:
+            dump(self.__model, path)
+            
+    def load_model(self, path="model.joblib"):
+        self.__model = load(path)
+        self.is_trained = True       
         
     def get_model(self):
         return self.__model
