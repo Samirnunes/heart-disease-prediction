@@ -1,6 +1,6 @@
 from copy import deepcopy
 from sklearn.model_selection import KFold
-from sklearn.metrics import recall_score, accuracy_score
+from sklearn.metrics import recall_score, accuracy_score, precision_score
 from sklearn.base import clone
 from hdp_model_trainer import HdpModelTrainer
 
@@ -13,6 +13,7 @@ class HdpModelEvaluator():
     def kfold_cross_val(self, X_train, y_train, threshold=0.5):
         kf = KFold(n_splits=5)
         accuracies = []
+        precisions = []
         recalls = []
         for fold, (train_index, val_index) in enumerate(kf.split(X_train), 1):
             X_train_fold = X_train.iloc[train_index].copy()
@@ -27,9 +28,11 @@ class HdpModelEvaluator():
             probs = trainer.get_model().predict_proba(X_val_fold)
             y_pred = (probs[:, 1] >= threshold).astype(int)
             accuracies.append(accuracy_score(y_val_fold, y_pred))
+            precisions.append(precision_score(y_val_fold, y_pred, average="binary"))
             recalls.append(recall_score(y_val_fold, y_pred, average="binary"))
             
-        return {"mean_accuracy": sum(accuracies)/len(accuracies), 
+        return {"mean_accuracy": sum(accuracies)/len(accuracies),
+                "mean_precision": sum(precisions)/len(precisions),
                 "mean_recall": sum(recalls)/len(recalls)}
 
     def test_scores(self, X_train, y_train, X_test, y_test, threshold=0.5):
@@ -46,5 +49,6 @@ class HdpModelEvaluator():
         y_pred = (probs[:, 1] >= threshold).astype(int)
         
         return {"test_accuracy": accuracy_score(y_test_copy, y_pred), 
+                "test_precision": precision_score(y_test_copy, y_pred, average="binary"),
                 "test_recall": recall_score(y_test_copy, y_pred, average="binary")}
     
