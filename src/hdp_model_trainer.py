@@ -6,6 +6,12 @@ class HdpModelTrainer():
         self.__model = model
         self.is_trained = False
         
+    def save_model(self):
+        """
+        TODO
+        """
+        pass
+        
     def get_model(self):
         return self.__model
     
