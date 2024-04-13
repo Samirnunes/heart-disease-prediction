@@ -1,4 +1,3 @@
 from hdp_data_import import import_heart_disease_data
-from hdp_data_transformer import HdpDataTransformer
 from hdp_model_evaluator import HdpModelEvaluator
 

@@ -2,11 +2,13 @@ from copy import deepcopy
 from sklearn.model_selection import KFold
 from sklearn.metrics import recall_score, accuracy_score
 from sklearn.base import clone
+from hdp_model_trainer import HdpModelTrainer
 
 class HdpModelEvaluator():
-    def __init__(self, model, pipeline):
+    def __init__(self, model, pipeline, random_state=100):
         self.__model = model
         self.__pipeline = pipeline
+        self.__random_state = random_state
         
     def kfold_cross_val(self, X_train, y_train):
         kf = KFold(n_splits=5)
@@ -17,11 +19,12 @@ class HdpModelEvaluator():
             y_train_fold = y_train.iloc[train_index].copy()
             X_val_fold = X_train.iloc[val_index].copy()
             y_val_fold = y_train.iloc[val_index].copy() 
-            X_train_fold, X_val_fold, y_train_fold, y_val_fold = \
-                deepcopy(self.__pipeline).fit_transform(X_train_fold, X_val_fold, y_train_fold, y_val_fold)
-            model = clone(self.__model)
-            model.fit(X_train_fold, y_train_fold)  
-            y_pred = model.predict(X_val_fold)
+            pipeline = deepcopy(self.__pipeline)
+            X_train_fold = pipeline.fit_tranform(X_train_fold)
+            X_val_fold = pipeline.transform(X_val_fold)
+            trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
+            trainer.train(X_train_fold, y_train_fold)
+            y_pred = trainer.get_model().predict(X_val_fold)
             accuracies.append(accuracy_score(y_val_fold, y_pred))
             recalls.append(recall_score(y_val_fold, y_pred, average="macro"))
             
@@ -29,15 +32,16 @@ class HdpModelEvaluator():
                 "mean_recall": sum(recalls)/len(recalls)}
 
     def test_scores(self, X_train, y_train, X_test, y_test):
-        model = clone(self.__model)
         X_train_copy = X_train.copy()
         X_test_copy = X_test.copy()
         y_train_copy = y_train.copy()
         y_test_copy = y_test.copy()
-        X_train_copy, X_test_copy, y_train_copy, y_test_copy = \
-            deepcopy(self.__pipeline).fit_transform(X_train_copy, X_test_copy, y_train_copy, y_test_copy)
-        model.fit(X_train_copy, y_train_copy) 
-        y_pred = model.predict(X_test_copy)
+        pipeline = deepcopy(self.__pipeline)
+        X_train_copy = pipeline.fit_transform(X_train_copy)
+        X_test_copy = pipeline.transform(X_test_copy)
+        trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
+        trainer.train(X_train_copy, y_train_copy)
+        y_pred = trainer.get_model().predict(X_test_copy)
         
         return {"test_accuracy": accuracy_score(y_test_copy, y_pred), 
                 "test_recall": recall_score(y_test_copy, y_pred, average="macro")}
