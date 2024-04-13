@@ -1,6 +1,5 @@
 from copy import deepcopy
 from sklearn.model_selection import KFold
-from imblearn.over_sampling import SMOTE
 from sklearn.metrics import recall_score, accuracy_score
 from sklearn.base import clone
 
