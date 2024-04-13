@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from data_split import stratified_split
 from hdp_data_pipeline import HdpDataPipeline
 
