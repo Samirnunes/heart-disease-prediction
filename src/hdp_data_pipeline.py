@@ -29,7 +29,7 @@ class HdpDataPipeline():
         X = pd.DataFrame(self.__scaler.transform(X), columns=X.columns)
         return X
     
-    def fit_tranform(self, X_train):
+    def fit_transform(self, X_train):
         self.fit(X_train)
         return self.transform(X_train)
         
