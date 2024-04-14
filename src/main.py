@@ -17,8 +17,8 @@ def main():
         SVC(probability=True)
     ]
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
-    for i in many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5):
-        print(i)
+    for metrics in many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5):
+        print(metrics)
 
 if __name__ == "__main__":
     main()    
