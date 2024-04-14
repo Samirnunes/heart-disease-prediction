@@ -1,6 +1,6 @@
 # Heart Disease Prediction 
 
-Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an integer valued from 0 (no presence of disease) to 4 (the highest level of disease).
+Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease).
 
 ## Data
 
@@ -25,12 +25,6 @@ The columns are:
 11. `slope`: the slope of the peak exercise ST segment -- Value 1: upsloping -- Value 2: flat -- Value 3: downsloping
 12. `ca`: number of major vessels (0-3) colored by flourosopy
 13. `thal`: 3 = normal; 6 = fixed defect; 7 = reversable defect
-
-The target, `disease_degree`, is clearly imbalanced, as we can see in the following graph:
-
-<p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/disease_degree.png" alt="Material Bread logo">
-<p>
 
 ## Results
 
