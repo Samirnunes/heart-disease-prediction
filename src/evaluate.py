@@ -17,7 +17,7 @@ def evaluate():
         RandomForestClassifier(n_estimators=100, random_state=random_state),
         DecisionTreeClassifier(random_state=random_state),
         LogisticRegression(),
-        SVC(probability=True),
+        SVC(probability=True, random_state=random_state),
         XGBClassifier(random_state=random_state)
     ]
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
