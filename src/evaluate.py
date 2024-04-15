@@ -7,7 +7,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
 
-def main():
+def evaluate():
     X_train, X_test, y_train, y_test = import_heart_disease_data()
     random_state = 100
     pipeline = HdpDataPipeline()
@@ -22,5 +22,4 @@ def main():
     for metrics in many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5):
         print(metrics)
 
-if __name__ == "__main__":
-    main()    
+evaluate()    
