@@ -18,7 +18,7 @@ def evaluate():
         DecisionTreeClassifier(random_state=random_state),
         LogisticRegression(),
         SVC(probability=True),
-        XGBClassifier()
+        XGBClassifier(random_state=random_state)
     ]
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
     model_count = 1
