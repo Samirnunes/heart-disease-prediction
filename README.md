@@ -28,7 +28,7 @@ The columns are:
 
 ## Results
 
-The notebook `data_analysis.ipynb` shows an initial data analysis used to understanding the basic about the dataset: the univariate distribuitions and the correlation between each variable and the target. 
+The notebook `data_analysis.ipynb` shows an initial data analysis used to understanding the basic about the dataset: the univariate distributions and the correlation between each variable and the target. 
 
 For example, the correlations heatmap is showed below:
 
