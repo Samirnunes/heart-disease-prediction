@@ -9,6 +9,7 @@ decorator==5.1.1
 docutils==0.16
 executing==2.0.1
 fonttools==4.47.0
+graphviz==0.20.3
 imbalanced-learn==0.12.2
 imblearn==0.0
 ipython==8.19.0
@@ -27,6 +28,7 @@ packaging==23.2
 pandas==2.1.4
 parso==0.8.3
 Pillow==10.1.0
+plotly==5.20.0
 prompt-toolkit==3.0.43
 Pygments==2.17.2
 pyparsing==3.1.1
@@ -39,7 +41,9 @@ scipy==1.13.0
 seaborn==0.13.2
 six==1.16.0
 stack-data==0.6.3
+tenacity==8.2.3
 threadpoolctl==3.4.0
 traitlets==5.14.1
 tslearn==0.6.1
 tzdata==2024.1
+xgboost==2.0.3
