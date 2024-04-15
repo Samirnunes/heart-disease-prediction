@@ -6,6 +6,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from xgboost import XGBClassifier
+import os
+import json
 
 def evaluate():
     X_train, X_test, y_train, y_test = import_heart_disease_data()
@@ -19,7 +21,13 @@ def evaluate():
         XGBClassifier()
     ]
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
+    model_count = 1
     for metrics in many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5):
-        print(metrics)
+        folder = "../evaluation_metrics"
+        if not os.path.exists(folder):
+            os.mkdir(folder)
+        with open(f"{folder}/model-{model_count}.txt", 'w') as f:
+            f.write(json.dumps(metrics))
+        model_count += 1
 
 evaluate()    
