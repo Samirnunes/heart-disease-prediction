@@ -10,9 +10,7 @@ import os
 import json
 
 def evaluate():
-    X_train, X_test, y_train, y_test = import_heart_disease_data()
     random_state = 100
-    pipeline = HdpDataPipeline()
     models = [
         RandomForestClassifier(n_estimators=100, random_state=random_state),
         DecisionTreeClassifier(random_state=random_state),
@@ -20,14 +18,23 @@ def evaluate():
         SVC(probability=True, random_state=random_state),
         XGBClassifier(random_state=random_state)
     ]
+    names = [
+        "RandomForestBase",
+        "DecisionTreeBase",
+        "LogisticRegressionBase",
+        "SVCBase",
+        "XGBClassifierBase"
+    ]
+      
+    X_train, X_test, y_train, y_test = import_heart_disease_data()
+    pipeline = HdpDataPipeline()
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
-    model_count = 1
-    for metrics in many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5):
+    for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5), names):
+        metrics["name"] = name
         folder = "../evaluation_metrics"
         if not os.path.exists(folder):
-            os.mkdir(folder)
-        with open(f"{folder}/model-{model_count}.txt", 'w') as f:
+            os.makedirs(folder)
+        with open(f"{folder}/{name}.txt", 'w') as f:
             f.write(json.dumps(metrics))
-        model_count += 1
 
 evaluate()    

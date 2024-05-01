@@ -26,7 +26,7 @@ class HdpDataPipeline():
         """
         X_nan_less_50 = X[~(X.isna().sum(axis=1) > len(X.columns)/2)].reset_index(drop=True)
         if len(X) - len(X_nan_less_50) > 0:
-            raise Exception("Please fill at least half of the parameters for the model prediction.")
+            raise Exception("Please fill at least half of the parameters for the model's prediction.")
         X.loc[:, self.__numerical] = self.__numerical_imputer.transform(X.loc[:, self.__numerical])
         X.loc[:, self.__categorical] = self.__categorical_imputer.transform(X.loc[:, self.__categorical])
         X = pd.DataFrame(self.__scaler.transform(X), columns=X.columns)
