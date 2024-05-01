@@ -1,0 +1,1 @@
+{"mean_accuracy": 0.8267307952851917, "mean_precision": 0.842089869873881, "mean_recall": 0.846968601374831, "name": "RandomForestBase"}

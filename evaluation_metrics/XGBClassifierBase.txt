@@ -1,0 +1,1 @@
+{"mean_accuracy": 0.7970600189676196, "mean_precision": 0.8241232197753938, "mean_recall": 0.8018437176062095, "name": "XGBClassifierBase"}

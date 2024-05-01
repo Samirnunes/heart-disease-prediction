@@ -1,0 +1,1 @@
+{"name": "RandomForestBaseDeploy", "threshold": 0.5, "train_accuracy": 1.0, "train_precision": 1.0, "train_recall": 1.0}
