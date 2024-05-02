@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
+import pickle
+import os
 
 class HdpDataPipeline():
     def __init__(self):
@@ -9,6 +11,7 @@ class HdpDataPipeline():
         self.__numerical_imputer = SimpleImputer(strategy="mean")
         self.__categorical_imputer = SimpleImputer(strategy="most_frequent")
         self.__scaler = MinMaxScaler(feature_range=(0, 1), clip=True)
+        self.fitted = False
         
     def fit(self, X_train):
         """
@@ -18,6 +21,7 @@ class HdpDataPipeline():
         X_train_copy.loc[:, self.__numerical] = self.__numerical_imputer.fit_transform(X_train_copy.loc[:, self.__numerical])
         X_train_copy.loc[:, self.__categorical] = self.__categorical_imputer.fit_transform(X_train_copy.loc[:, self.__categorical])
         X_train_copy = pd.DataFrame(self.__scaler.fit_transform(X_train_copy), columns=X_train_copy.columns)
+        self.fitted = True
         return self
     
     def transform(self, X):
@@ -35,6 +39,17 @@ class HdpDataPipeline():
     def fit_transform(self, X_train):
         self.fit(X_train)
         return self.transform(X_train)
+    
+    def save_pipeline(self, folder_path="../deploy-models/", filename="pipeline.pkl"):
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+        with open(folder_path + filename, "wb") as f:
+            pickle.dump(self, f, pickle.HIGHEST_PROTOCOL)
+            
+    @staticmethod      
+    def load_pipeline(folder_path="../deploy-models/", filename="pipeline.pkl"):
+        with open(folder_path + filename, "rb") as f:
+            return pickle.load(f)
     
     @staticmethod
     def filter_nan(X, y):

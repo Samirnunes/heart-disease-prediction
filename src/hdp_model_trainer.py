@@ -1,25 +1,30 @@
 from imblearn.over_sampling import SMOTE
-from joblib import dump, load
+import pickle
 import os
 
 class HdpModelTrainer():
-    def __init__(self, model, random_state=100):
+    def __init__(self, model=None, random_state=100):
         self.__random_state = random_state
         self.__model = model
         self.trained = False
         
-    def save_model(self, folder_path="../deploy-models/", filename="model.joblib"):
+    def save_trainer(self, folder_path="../deploy-models/", filename="trainer.pkl"):
         if self.trained:
             if not os.path.exists(folder_path):
                 os.makedirs(folder_path)
-            dump(self.__model, folder_path + filename)
-            
-    def load_model(self, path="model.joblib"):
-        self.__model = load(path)
-        self.trained = True       
+            with open(folder_path + filename, "wb") as f:
+                pickle.dump(self, f, pickle.HIGHEST_PROTOCOL)    
+    
+    @staticmethod
+    def load_trainer(folder_path="../deploy-models/", filename="trainer.pkl"):
+        with open(folder_path + filename, "rb") as f:
+            return pickle.load(f)    
         
     def get_model(self):
         return self.__model
+    
+    def set_model(self, model):
+        self.__model = model
     
     def train(self, X_train, y_train):
         X_train_over, y_train_over = self.__fit_resample(X_train, y_train)

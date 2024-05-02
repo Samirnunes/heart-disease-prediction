@@ -21,7 +21,8 @@ def train():
     trainer.train(X_all, y_all)
     
     folder_path = f"../deploy-models/{name}/"
-    trainer.save_model(folder_path, "model.joblib")
+    pipeline.save_pipeline(folder_path, "pipeline.pkl")
+    trainer.save_trainer(folder_path, "trainer.pkl")
     
     model = trainer.get_model()
     probs = model.predict_proba(X_all)
