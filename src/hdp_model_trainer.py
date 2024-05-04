@@ -6,6 +6,7 @@ class HdpModelTrainer():
     def __init__(self, model=None, random_state=100):
         self.__random_state = random_state
         self.__model = model
+        self.__threshold = None
         self.trained = False
         
     def save_trainer(self, folder_path="../deploy-models/", filename="trainer.pkl"):
@@ -26,11 +27,19 @@ class HdpModelTrainer():
     def set_model(self, model):
         self.__model = model
     
-    def train(self, X_train, y_train):
+    def train(self, X_train, y_train, threshold=0.5):
         X_train_over, y_train_over = self.__fit_resample(X_train, y_train)
         self.__model.fit(X_train_over, y_train_over)
-        self.trained = True           
+        self.trained = True
+        self.__threshold = threshold           
         return self
+    
+    def predict(self, X):
+        if(self.trained):
+            probs = self.__model.predict_proba(X)
+            y_pred = (probs[:, 1] >= self.__threshold).astype(int)
+            return y_pred
+        return None
     
     def __fit_resample(self, X_train, y_train):
         X_train_oversampled, y_train_oversampled = \

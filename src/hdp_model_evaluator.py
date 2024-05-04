@@ -24,9 +24,8 @@ class HdpModelEvaluator():
             X_train_fold = pipeline.fit_transform(X_train_fold)
             X_val_fold = pipeline.transform(X_val_fold)
             trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
-            trainer.train(X_train_fold, y_train_fold)
-            probs = trainer.get_model().predict_proba(X_val_fold)
-            y_pred = (probs[:, 1] >= threshold).astype(int)
+            trainer.train(X_train_fold, y_train_fold, threshold)
+            y_pred = trainer.predict(X_val_fold)
             accuracies.append(accuracy_score(y_val_fold, y_pred))
             precisions.append(precision_score(y_val_fold, y_pred, average="binary"))
             recalls.append(recall_score(y_val_fold, y_pred, average="binary"))
@@ -44,9 +43,8 @@ class HdpModelEvaluator():
         X_train_copy = pipeline.fit_transform(X_train_copy)
         X_test_copy = pipeline.transform(X_test_copy)
         trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
-        trainer.train(X_train_copy, y_train_copy)
-        probs = trainer.get_model().predict_proba(X_test_copy)
-        y_pred = (probs[:, 1] >= threshold).astype(int)
+        trainer.train(X_train_copy, y_train_copy, threshold)
+        y_pred = trainer.predict(X_test_copy)
         
         return {"test_accuracy": accuracy_score(y_test_copy, y_pred), 
                 "test_precision": precision_score(y_test_copy, y_pred, average="binary"),

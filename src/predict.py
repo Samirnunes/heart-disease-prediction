@@ -8,8 +8,7 @@ def predict(unprocessed_df):
     pipeline = HdpDataPipeline.load_pipeline(folder_path, filename="pipeline.pkl")
     trainer = HdpModelTrainer.load_trainer(folder_path, filename="trainer.pkl")
     data = pipeline.transform(unprocessed_df)
-    model = trainer.get_model()
-    return str(model.predict(data))
+    return str(trainer.predict(data))
 
 rows = [
     {"age": 63.0, "sex": 1.0, "cp": 1.0, "trestbps": 145.0, "chol": 233.0, "fbs": 1.0, "restecg": 2.0, "thalach": 150.0, "exang": 0.0, "oldpeak": 2.3, "slope": 3.0, "ca": 0.0, "thal": 6.0},

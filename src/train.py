@@ -18,15 +18,13 @@ def train():
     X_all = pipeline.fit_transform(X_all)
     y_all = pd.concat([y_train, y_test], axis=0)
     trainer = HdpModelTrainer(model, random_state)
-    trainer.train(X_all, y_all)
+    trainer.train(X_all, y_all, threshold)
     
     folder_path = f"../deploy-models/{name}/"
     pipeline.save_pipeline(folder_path, "pipeline.pkl")
     trainer.save_trainer(folder_path, "trainer.pkl")
     
-    model = trainer.get_model()
-    probs = model.predict_proba(X_all)
-    y_pred = (probs[:, 1] >= threshold).astype(int)
+    y_pred = trainer.predict(X_all)
     metrics = {}
     metrics["name"] = name
     metrics["threshold"] = threshold
