@@ -9,6 +9,7 @@ from xgboost import XGBClassifier
 import os
 import json
 import matplotlib.pyplot as plt
+import numpy as np
 
 def evaluate():
     random_state = 100
@@ -32,11 +33,16 @@ def evaluate():
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
     for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5), names):
         metrics["name"] = name
-        plt.figure()
-        plt.hist(metrics["recalls"])
-        plt.title("Recalls distribuition")
-        plt.ylabel("Count")
-        plt.xlabel("Recall")
+        fig, axs = plt.subplots(1, 2)
+        axs[0].hist(metrics["recalls"])
+        axs[0].vlines(metrics["mean_recall"], 0, max(axs[0].get_yticks()), linestyles="--", color="red")
+        axs[0].set_title("Recall distribution")
+        axs[0].set_ylabel("Count")
+        axs[0].set_xlabel("Recall")
+        axs[0].vlines(0.75, 0, max(axs[0].get_yticks()), linestyles="--", color="green")
+        axs[0].legend(["Mean", "Goal", "Histogram"])
+        axs[1].boxplot(metrics["recalls"])
+        axs[1].set_title("Recall boxplot")
         metrics.pop("recalls")
         folder = f"../evaluation_metrics/{name}"
         if not os.path.exists(folder):

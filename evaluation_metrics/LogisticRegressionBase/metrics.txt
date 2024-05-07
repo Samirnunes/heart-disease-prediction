@@ -1,1 +1,1 @@
-{"mean_recall": 0.8216755793226376, "std_recall": 0.057490524816656306, "name": "LogisticRegressionBase"}
+{"mean_recall": 0.8216934046345808, "std_recall": 0.06284943369109985, "name": "LogisticRegressionBase"}
