@@ -32,7 +32,8 @@ class HdpModelEvaluator():
                 trainer.train(X_train_fold, y_train_fold, threshold)
                 y_pred = trainer.predict(X_val_fold)
                 recalls.append(recall_score(y_val_fold, y_pred, average="binary"))
-        return {"mean_recall": sum(recalls)/len(recalls), "std_recall": np.std(recalls)}
+        
+        return {"mean_recall": sum(recalls)/len(recalls), "std_recall": np.std(recalls), "recalls": recalls}
 
     def test_scores(self, X_train, y_train, X_test, y_test, threshold=0.5):
         X_train_copy = X_train.copy()

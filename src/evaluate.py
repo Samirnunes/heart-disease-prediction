@@ -8,6 +8,7 @@ from sklearn.svm import SVC
 from xgboost import XGBClassifier
 import os
 import json
+import matplotlib.pyplot as plt
 
 def evaluate():
     random_state = 100
@@ -31,10 +32,18 @@ def evaluate():
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
     for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5), names):
         metrics["name"] = name
-        folder = "../evaluation_metrics"
+        plt.figure()
+        plt.hist(metrics["recalls"])
+        plt.title("Recalls distribuition")
+        plt.ylabel("Count")
+        plt.xlabel("Recall")
+        metrics.pop("recalls")
+        folder = f"../evaluation_metrics/{name}"
         if not os.path.exists(folder):
             os.makedirs(folder)
-        with open(f"{folder}/{name}.txt", 'w') as f:
+        with open(f"{folder}/metrics.txt", 'w') as f:
             f.write(json.dumps(metrics))
+        plt.savefig(f"{folder}/recalls_hist.png")
+        plt.close()
 
 evaluate()    
