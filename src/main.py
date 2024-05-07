@@ -1,46 +1,28 @@
-from fastapi import FastAPI, Form, Depends, Response
-from pydantic import BaseModel
+from flask import Flask, request, jsonify
 import pandas as pd
 from predict import predict
 
-app = FastAPI()
+app = Flask(__name__)
 
-class PredictHeartDiseaseRequest(BaseModel):
-    '''
-    Request model for the "/api/heart-disease/predict" endpoint.
-    '''
-    age: float = Form(...)
-    sex: float = Form(...)
-    cp: float = Form(...)
-    trestbps: float = Form(...)
-    chol: float = Form(...)
-    fbs: float = Form(...)
-    restecg: float = Form(...)
-    thalach: float = Form(...)
-    exang: float = Form(...)
-    oldpeak: float = Form(...)
-    slope: float = Form(...)
-    ca: float = Form(...)
-    thal: float = Form(...)
-    
-@app.post("/api/heart-disease/predict")
-async def predict_heart_disease(request: PredictHeartDiseaseRequest = Depends()):
-    rows = [
-        {
-        "age": request.age, 
-        "sex": request.sex, 
-        "cp": request.cp, 
-        "trestbps": request.trestbps, 
-        "chol": request.chol, 
-        "fbs": request.fbs, 
-        "restecg": request.restecg, 
-        "thalach": request.thalach, 
-        "exang": request.exang, 
-        "oldpeak": request.oldpeak, 
-        "slope": request.slope, 
-        "ca": request.ca, 
-        "thal": request.thal
-        }
-    ]
-    return Response(predict(pd.DataFrame.from_dict(rows)))
-    
+@app.route("/api/heart-disease/predict", methods=["POST"])
+def predict_heart_disease():
+    data = {
+        "age": float(request.form.get("age")), 
+        "sex": float(request.form.get("sex")), 
+        "cp": float(request.form.get("cp")), 
+        "trestbps": float(request.form.get("trestbps")), 
+        "chol": float(request.form.get("chol")), 
+        "fbs": float(request.form.get("fbs")), 
+        "restecg": float(request.form.get("restecg")), 
+        "thalach": float(request.form.get("thalach")), 
+        "exang": float(request.form.get("exang")), 
+        "oldpeak": float(request.form.get("oldpeak")), 
+        "slope": float(request.form.get("slope")), 
+        "ca": float(request.form.get("ca")), 
+        "thal": float(request.form.get("thal"))
+    }
+    prediction = predict(pd.DataFrame([data]))
+    return jsonify({"prediction": prediction})
+
+if __name__ == "__main__":
+    app.run(debug=True)
