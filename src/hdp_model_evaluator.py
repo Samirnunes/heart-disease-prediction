@@ -1,5 +1,5 @@
 from copy import deepcopy
-from sklearn.model_selection import KFold
+from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import recall_score, accuracy_score, precision_score
 from sklearn.base import clone
 from hdp_model_trainer import HdpModelTrainer
@@ -11,7 +11,7 @@ class HdpModelEvaluator():
         self.__random_state = random_state
         
     def kfold_cross_val(self, X_train, y_train, threshold=0.5):
-        kf = KFold(n_splits=5)
+        kf = StratifiedKFold(n_splits=5)
         accuracies = []
         precisions = []
         recalls = []
