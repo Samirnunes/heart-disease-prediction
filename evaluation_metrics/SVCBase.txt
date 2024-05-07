@@ -1,1 +1,1 @@
-{"mean_accuracy": 0.8316894729711422, "mean_precision": 0.8638902142641218, "mean_recall": 0.8223459776217726, "name": "SVCBase"}
+{"mean_recall": 0.8201604278074862, "std_recall": 0.06074713318100606, "name": "SVCBase"}
