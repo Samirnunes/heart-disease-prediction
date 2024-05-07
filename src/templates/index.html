@@ -3,11 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Frontend</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Heart Disease Prediction</title>
 </head>
 <body>
-    <h1>Hello, Flask!</h1>
-    <p>This is a basic Flask frontend.</p>
+    <h1>Heart Disease Prediction</h1>
+    <form action="/api/heart-disease/predict" method="post">
+        <label for="age">Age (in years):</label><br>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="sex">Sex:</label><br>
+        <select id="sex" name="sex" required>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select><br><br>
+
+        <label for="cp">Chest Pain Type:</label><br>
+        <select id="cp" name="cp" required>
+            <option value="1">Typical Angina</option>
+            <option value="2">Atypical Angina</option>
+            <option value="3">Non-Anginal Pain</option>
+            <option value="4">Asymptomatic</option>
+        </select><br><br>
+
+        <label for="trestbps">Resting Blood Pressure (mm Hg):</label><br>
+        <input type="number" id="trestbps" name="trestbps" required><br><br>
+
+        <label for="chol">Serum Cholestoral (mg/dl):</label><br>
+        <input type="number" id="chol" name="chol" required><br><br>
+
+        <label for="fbs">Fasting Blood Sugar (>120 mg/dl):</label><br>
+        <select id="fbs" name="fbs" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <label for="restecg">Resting Electrocardiographic Results:</label><br>
+        <select id="restecg" name="restecg" required>
+            <option value="0">Normal</option>
+            <option value="1">ST-T Wave Abnormality</option>
+            <option value="2">Probable or Definite Left Ventricular Hypertrophy</option>
+        </select><br><br>
+
+        <label for="thalach">Maximum Heart Rate Achieved:</label><br>
+        <input type="number" id="thalach" name="thalach" required><br><br>
+
+        <label for="exang">Exercise Induced Angina:</label><br>
+        <select id="exang" name="exang" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br><br>
+
+        <label for="oldpeak">ST Depression Induced by Exercise:</label><br>
+        <input type="number" id="oldpeak" name="oldpeak" required><br><br>
+
+        <label for="slope">Slope of the Peak Exercise ST Segment:</label><br>
+        <select id="slope" name="slope" required>
+            <option value="1">Upsloping</option>
+            <option value="2">Flat</option>
+            <option value="3">Downsloping</option>
+        </select><br><br>
+
+        <label for="ca">Number of Major Vessels Colored by Fluoroscopy:</label><br>
+        <input type="number" id="ca" name="ca" min="0" max="3" required><br><br>
+
+        <label for="thal">Thal:</label><br>
+        <select id="thal" name="thal" required>
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversible Defect</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
 </body>
 </html>
