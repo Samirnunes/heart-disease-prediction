@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import pandas as pd
 from predict import predict
 
@@ -23,6 +23,10 @@ def predict_heart_disease():
     }
     prediction = predict(pd.DataFrame([data]))
     return jsonify({"prediction": prediction})
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
