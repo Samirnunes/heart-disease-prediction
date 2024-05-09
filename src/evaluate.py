@@ -36,6 +36,7 @@ def evaluate():
         fig, axs = plt.subplots(1, 2)
         axs[0].hist(metrics["recalls"])
         axs[0].vlines(metrics["mean_recall"], 0, max(axs[0].get_yticks()), linestyles="--", color="red")
+        axs[0].errorbar(metrics["mean_recall"], max(axs[0].get_yticks())/2, xerr=metrics["std_recall"], fmt='o', color='red', capsize=6)
         axs[0].set_title("Recall distribution")
         axs[0].set_ylabel("Count")
         axs[0].set_xlabel("Recall")

@@ -1,1 +1,1 @@
-{"mean_recall": 0.810231729055258, "std_recall": 0.06910828612491778, "name": "XGBClassifierBase"}
+{"mean_recall": 0.8065062388591794, "std_recall": 0.07306448377957571, "name": "XGBClassifierBase"}
