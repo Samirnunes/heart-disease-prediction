@@ -15,8 +15,7 @@ class HdpModelEvaluator():
     def kfold_cross_val(self, X_train, y_train, threshold=0.5, random_state=100):
         recalls = []
         for i in tqdm(range(10)):
-            state = random_state + i
-            kf = StratifiedKFold(n_splits=10, shuffle=True, random_state=state)
+            kf = StratifiedKFold(n_splits=10, shuffle=True, random_state=random_state+i)
             for fold, (train_index, val_index) in tqdm(enumerate(kf.split(X_train, y_train), 1)):
                 X_train_fold = X_train.iloc[train_index].copy()
                 y_train_fold = y_train.iloc[train_index].copy()
