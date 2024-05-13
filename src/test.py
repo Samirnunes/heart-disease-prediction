@@ -8,9 +8,8 @@ from sklearn.svm import SVC
 from xgboost import XGBClassifier
 import os
 import json
-import matplotlib.pyplot as plt
 
-def evaluate():
+def test():
     random_state = 100
     models = [
         RandomForestClassifier(n_estimators=100, random_state=random_state),
@@ -30,26 +29,11 @@ def evaluate():
     X_train, X_test, y_train, y_test = import_heart_disease_data()
     pipeline = HdpDataPipeline()
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
-    for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5), names):
-        metrics["name"] = name
-        fig, axs = plt.subplots(1, 2)
-        axs[0].hist(metrics["recalls"])
-        axs[0].vlines(metrics["mean_recall"], 0, max(axs[0].get_yticks()), linestyles="--", color="red")
-        axs[0].errorbar(metrics["mean_recall"], max(axs[0].get_yticks())/2, xerr=metrics["std_recall"], fmt='o', color='red', capsize=6)
-        axs[0].set_title("Recall distribution")
-        axs[0].set_ylabel("Count")
-        axs[0].set_xlabel("Recall")
-        axs[0].vlines(0.75, 0, max(axs[0].get_yticks()), linestyles="--", color="green")
-        axs[0].legend(["Mean", "Goal", "Histogram"])
-        axs[1].boxplot(metrics["recalls"])
-        axs[1].set_title("Recall boxplot")
-        metrics.pop("recalls")
-        folder = f"../evaluation_metrics/{name}"
+    for score, name in zip(many_evaluator.test_scores(X_train, y_train, X_test, y_test, threshold=0.5), names):
+        folder = f"../test_metrics/{name}"
         if not os.path.exists(folder):
             os.makedirs(folder)
-        with open(f"{folder}/metrics.txt", 'w') as f:
-            f.write(json.dumps(metrics))
-        plt.savefig(f"{folder}/recalls_hist.png")
-        plt.close()
-
-evaluate()    
+        with open(f"{folder}/score.txt", 'w') as f:
+            f.write(json.dumps(score))
+        
+test()
