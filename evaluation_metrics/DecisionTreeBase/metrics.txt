@@ -1,1 +1,1 @@
-{"mean_recall": 0.7463992869875219, "std_recall": 0.07236466567191978, "name": "DecisionTreeBase"}
+{"mean_recall": 0.7443048128342243, "std_recall": 0.07381378542694644, "name": "DecisionTreeBase"}

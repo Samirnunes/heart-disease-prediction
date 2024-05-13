@@ -3,64 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/styles.css">
     <title>Heart Disease Prediction</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        
-        h1 {
-            color: #0056b3;
-        }
-        
-        form {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        
-        label {
-            margin-bottom: 10px;
-            display: block;
-            font-weight: bold;
-        }
-        
-        input[type="number"],
-        select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-        
-        input[type="submit"] {
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        input[type="submit"]:hover {
-            background-color: #004494;
-        }
-        
-    </style>
 </head>
 <body>
-    <h1>Heart Disease Prediction</h1>
+    <div class="title-container">
+        <h1>Heart Disease Prediction</h1>
+    </div>
     <form action="/api/heart-disease/predict" method="post">
         <label for="age">Age (in years):</label><br>
         <input type="number" id="age" name="age" required><br><br>
