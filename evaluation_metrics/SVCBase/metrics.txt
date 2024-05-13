@@ -1,1 +1,1 @@
-{"mean_recall": 0.8234224598930473, "std_recall": 0.06498643773402654, "name": "SVCBase"}
+{"mean_recall": 0.8225668449197857, "std_recall": 0.06956688308065945, "name": "SVCBase"}

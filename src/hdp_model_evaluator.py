@@ -12,19 +12,16 @@ class HdpModelEvaluator():
         self.__pipeline = pipeline
         self.__random_state = random_state
         
-    def kfold_cross_val(self, X_train, y_train, threshold=0.5):
+    def kfold_cross_val(self, X_train, y_train, threshold=0.5, random_state=100):
         recalls = []
         for i in tqdm(range(10)):
-            kf = StratifiedKFold(n_splits=10)
-            X_train_shuffled = X_train.sample(frac=1).copy()
-            y_train_shuffled = y_train.iloc[X_train_shuffled.index].copy()
-            X_train_shuffled = X_train_shuffled.reset_index(drop=True)
-            y_train_shuffled = y_train_shuffled.reset_index(drop=True)
-            for fold, (train_index, val_index) in tqdm(enumerate(kf.split(X_train_shuffled, y_train_shuffled), 1)):
-                X_train_fold = X_train_shuffled.iloc[train_index].copy()
-                y_train_fold = y_train_shuffled.iloc[train_index].copy()
-                X_val_fold = X_train_shuffled.iloc[val_index].copy()
-                y_val_fold = y_train_shuffled.iloc[val_index].copy() 
+            state = random_state + i
+            kf = StratifiedKFold(n_splits=10, shuffle=True, random_state=state)
+            for fold, (train_index, val_index) in tqdm(enumerate(kf.split(X_train, y_train), 1)):
+                X_train_fold = X_train.iloc[train_index].copy()
+                y_train_fold = y_train.iloc[train_index].copy()
+                X_val_fold = X_train.iloc[val_index].copy()
+                y_val_fold = y_train.iloc[val_index].copy() 
                 pipeline = deepcopy(self.__pipeline)
                 X_train_fold = pipeline.fit_transform(X_train_fold)
                 X_val_fold = pipeline.transform(X_val_fold)
