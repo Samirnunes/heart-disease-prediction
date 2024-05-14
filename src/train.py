@@ -10,7 +10,6 @@ def train():
     random_state = 100
     model = RandomForestClassifier(n_estimators=100, random_state=random_state)
     name = "RandomForestBaseDeploy"
-    threshold = 0.5
     
     X_train, X_test, y_train, y_test = import_heart_disease_data()
     X_all = pd.concat([X_train, X_test], axis=0)
@@ -18,7 +17,7 @@ def train():
     X_all = pipeline.fit_transform(X_all)
     y_all = pd.concat([y_train, y_test], axis=0)
     trainer = HdpModelTrainer(model, random_state)
-    trainer.train(X_all, y_all, threshold)
+    trainer.train(X_all, y_all)
     
     folder_path = f"../deploy-models/{name}/"
     pipeline.save_pipeline(folder_path, "pipeline.pkl")
@@ -27,7 +26,6 @@ def train():
     y_pred = trainer.predict(X_all)
     metrics = {}
     metrics["name"] = name
-    metrics["threshold"] = threshold
     metrics["train_precision"] = precision_score(y_all, y_pred, average="binary")
     metrics["train_recall"] = recall_score(y_all, y_pred, average="binary")
     with open(f"{folder_path}/metrics.txt", 'w') as f:

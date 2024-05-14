@@ -8,6 +8,7 @@ def predict(unprocessed_df):
     pipeline = HdpDataPipeline.load_pipeline(folder_path, filename="pipeline.pkl")
     trainer = HdpModelTrainer.load_trainer(folder_path, filename="trainer.pkl")
     data = pipeline.transform(unprocessed_df)
+    print(str(trainer.predict(data)))
     return str(trainer.predict(data))
 
 rows = [

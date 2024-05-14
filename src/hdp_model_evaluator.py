@@ -12,7 +12,7 @@ class HdpModelEvaluator():
         self.__pipeline = pipeline
         self.__random_state = random_state
         
-    def kfold_cross_val(self, X_train, y_train, threshold=0.5, random_state=100):
+    def kfold_cross_val(self, X_train, y_train, random_state=100):
         recalls = []
         precisions = []
         for i in tqdm(range(10)):
@@ -26,7 +26,7 @@ class HdpModelEvaluator():
                 X_train_fold = pipeline.fit_transform(X_train_fold)
                 X_val_fold = pipeline.transform(X_val_fold)
                 trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
-                trainer.train(X_train_fold, y_train_fold, threshold)
+                trainer.train(X_train_fold, y_train_fold)
                 y_pred = trainer.predict(X_val_fold)
                 recalls.append(recall_score(y_val_fold, y_pred, average="binary"))
                 precisions.append(precision_score(y_val_fold, y_pred, average="binary"))
@@ -34,7 +34,7 @@ class HdpModelEvaluator():
         return {"mean_recall": sum(recalls)/len(recalls), "std_recall": np.std(recalls), "recalls": recalls,
                 "mean_precision": sum(precisions)/len(precisions), "std_precision": np.std(precisions), "precisions": precisions}
 
-    def test_scores(self, X_train, y_train, X_test, y_test, threshold=0.5):
+    def test_scores(self, X_train, y_train, X_test, y_test):
         X_train_copy = X_train.copy()
         X_test_copy = X_test.copy()
         y_train_copy = y_train.copy()
@@ -43,7 +43,7 @@ class HdpModelEvaluator():
         X_train_copy = pipeline.fit_transform(X_train_copy)
         X_test_copy = pipeline.transform(X_test_copy)
         trainer = HdpModelTrainer(clone(self.__model), self.__random_state)
-        trainer.train(X_train_copy, y_train_copy, threshold)
+        trainer.train(X_train_copy, y_train_copy)
         y_pred = trainer.predict(X_test_copy)
         
         return {"test_recall": recall_score(y_test_copy, y_pred, average="binary"),

@@ -30,7 +30,7 @@ def evaluate():
     X_train, X_test, y_train, y_test = import_heart_disease_data()
     pipeline = HdpDataPipeline()
     many_evaluator = HdpManyModelEvaluator(models, pipeline)
-    for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train, threshold=0.5), names):
+    for metrics, name in zip(many_evaluator.kfold_cross_val(X_train, y_train), names):
         metrics["name"] = name
         fig, axs = plt.subplots(1, 2)
         axs[0].hist(metrics["recalls"])

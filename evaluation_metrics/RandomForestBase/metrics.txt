@@ -1,1 +1,1 @@
-{"mean_recall": 0.8427985739750434, "std_recall": 0.06661073416007914, "mean_precision": 0.8338520089920561, "std_precision": 0.047045223719044384, "name": "RandomForestBase"}
+{"mean_recall": 0.8370588235294107, "std_recall": 0.0668675398447447, "mean_precision": 0.8386872631089035, "std_precision": 0.04431406790799151, "name": "RandomForestBase"}
