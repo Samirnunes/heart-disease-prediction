@@ -2,7 +2,7 @@ from hdp_data_import import import_heart_disease_data
 from hdp_data_pipeline import HdpDataPipeline
 from hdp_model_trainer import HdpModelTrainer
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import recall_score, accuracy_score, precision_score
+from sklearn.metrics import recall_score, precision_score
 import pandas as pd
 import json
 
@@ -28,7 +28,6 @@ def train():
     metrics = {}
     metrics["name"] = name
     metrics["threshold"] = threshold
-    metrics["train_accuracy"] = accuracy_score(y_all, y_pred)
     metrics["train_precision"] = precision_score(y_all, y_pred, average="binary")
     metrics["train_recall"] = recall_score(y_all, y_pred, average="binary")
     with open(f"{folder_path}/metrics.txt", 'w') as f:
