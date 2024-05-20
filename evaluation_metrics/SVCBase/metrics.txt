@@ -1,1 +1,1 @@
-{"mean_recall": 0.8174688057040994, "std_recall": 0.06889777073557746, "mean_precision": 0.8633012480190801, "std_precision": 0.04990298841188031, "name": "SVCBase"}
+{"mean_recall": 0.8174688057040994, "std_recall": 0.06889777073557746, "mean_precision": 0.8633012480190801, "std_precision": 0.04990298841188031, "mean_train_recall": 0.8486921730151957, "mean_train_precision": 0.8863362976832754, "name": "SVCBase"}

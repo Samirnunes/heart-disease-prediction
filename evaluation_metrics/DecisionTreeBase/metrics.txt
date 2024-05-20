@@ -1,1 +1,1 @@
-{"mean_recall": 0.7508645276292336, "std_recall": 0.08436048559579468, "mean_precision": 0.758700292303353, "std_precision": 0.06333932723158288, "name": "DecisionTreeBase"}
+{"mean_recall": 0.7508645276292336, "std_recall": 0.08436048559579468, "mean_precision": 0.758700292303353, "std_precision": 0.06333932723158288, "mean_train_recall": 1.0, "mean_train_precision": 1.0, "name": "DecisionTreeBase"}

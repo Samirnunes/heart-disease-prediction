@@ -12,7 +12,7 @@ import json
 def test():
     random_state = 100
     models = [
-        RandomForestClassifier(n_estimators=100, random_state=random_state),
+        RandomForestClassifier(n_estimators=100, random_state=random_state, max_depth=3, max_leaf_nodes=10),
         DecisionTreeClassifier(random_state=random_state),
         LogisticRegression(),
         SVC(probability=True, random_state=random_state),

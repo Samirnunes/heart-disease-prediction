@@ -1,1 +1,1 @@
-{"mean_recall": 0.8243493761140815, "std_recall": 0.06253200730370244, "mean_precision": 0.8565536476774818, "std_precision": 0.04946015323006331, "name": "LogisticRegressionBase"}
+{"mean_recall": 0.8243493761140815, "std_recall": 0.06253200730370244, "mean_precision": 0.8565536476774818, "std_precision": 0.04946015323006331, "mean_train_recall": 0.8306201880990328, "mean_train_precision": 0.8636414837126095, "name": "LogisticRegressionBase"}

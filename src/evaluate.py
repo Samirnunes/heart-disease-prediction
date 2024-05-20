@@ -13,18 +13,18 @@ import matplotlib.pyplot as plt
 def evaluate():
     random_state = 100
     models = [
-        RandomForestClassifier(n_estimators=100, random_state=random_state),
-        DecisionTreeClassifier(random_state=random_state),
-        LogisticRegression(),
-        SVC(probability=True, random_state=random_state),
-        XGBClassifier(random_state=random_state)
+        RandomForestClassifier(n_estimators=100, random_state=random_state, max_depth=3, max_leaf_nodes=10)
+        #DecisionTreeClassifier(random_state=random_state),
+        #LogisticRegression(),
+        #SVC(probability=True, random_state=random_state),
+        #XGBClassifier(random_state=random_state)
     ]
     names = [
-        "RandomForestBase",
-        "DecisionTreeBase",
-        "LogisticRegressionBase",
-        "SVCBase",
-        "XGBClassifierBase"
+        "RandomForestBase"
+        #"DecisionTreeBase",
+        #"LogisticRegressionBase",
+        #"SVCBase",
+        #"XGBClassifierBase"
     ]
       
     X_train, X_test, y_train, y_test = import_heart_disease_data()
