@@ -1,0 +1,1 @@
+{"mean_recall": 0.7050623885918006, "std_recall": 0.08296324926102124, "mean_precision": 0.8643821746002865, "std_precision": 0.058645220229637904, "mean_train_recall": 0.727340575969114, "mean_train_precision": 0.886332317136528, "name": "DecisionTreeMaxDepth3MaxLeafNodes10"}

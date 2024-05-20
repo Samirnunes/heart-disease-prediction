@@ -1,0 +1,1 @@
+{"mean_recall": 0.8286452762923345, "std_recall": 0.07126643758103883, "mean_precision": 0.8529801418410692, "std_precision": 0.04831290781037951, "mean_train_recall": 0.8488292069762742, "mean_train_precision": 0.881229328347645, "name": "RandomForestMaxDepth3MaxLeafNodes10"}
