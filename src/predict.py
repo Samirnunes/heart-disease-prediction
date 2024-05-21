@@ -4,7 +4,8 @@ from hdp_data_pipeline import HdpDataPipeline
 from hdp_model_trainer import HdpModelTrainer
 
 def predict(unprocessed_df):
-    folder_path = "../deploy-models/RandomForestBaseDeploy/"
+    deploy_model = "LogisticRegressionBase"
+    folder_path = "../deploy-models/" + deploy_model + "/"
     pipeline = HdpDataPipeline.load_pipeline(folder_path, filename="pipeline.pkl")
     trainer = HdpModelTrainer.load_trainer(folder_path, filename="trainer.pkl")
     data = pipeline.transform(unprocessed_df)
