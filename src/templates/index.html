@@ -10,7 +10,7 @@
     <div class="title-container">
         <h1>Heart Disease Prediction</h1>
     </div>
-    <form action="/api/heart-disease/predict" method="post">
+    <form id="prediction-form">
         <label for="age">Age (in years):</label><br>
         <input type="number" id="age" name="age" required><br><br>
 
@@ -77,7 +77,34 @@
         </select><br><br>
 
         <input type="submit" value="Predict">
-        <!-- testing -->
     </form>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const formProps = new URLSearchParams(formData).toString();
+
+            fetch('/api/heart-disease/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formProps
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('result');
+                const predictionResult = data.prediction;
+                const resultToPrint = data.prediction == "[1]" ? "The patient has heart disease." : "The patient doesn't have heart disease."
+                resultDiv.innerHTML = `<h2>Prediction Result</h2><p>${resultToPrint}</p>`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+
 </body>
 </html>
