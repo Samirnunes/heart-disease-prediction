@@ -106,7 +106,7 @@ These results are consistent with the performed validation.
 
 ### Final Training and Deploy
 
-Finally, the model was trained on all 920 observations of the dataset and deployed on a web page created using Flask, HTML, and CSS. Prediction through the model is done via an endpoint named predict_heart_disease, which receives the values of each feature and returns 0 or 1 for the disease prediction.
+Finally, the model was trained on all 920 observations of the dataset and deployed on a web page created using Flask, HTML, and CSS. Prediction through the model is done via an endpoint named predict_heart_disease, which receives the values of each feature and returns 0 or 1 for the disease prediction. Besides, it's possible to the doctor to give a feedback related to the prediction - he can select which prediction he thinks is correct, so we can compare with the model's output and use these feedbacks in the future to improve it.
 
 
 
