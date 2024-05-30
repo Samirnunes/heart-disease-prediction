@@ -6,6 +6,10 @@
 
 Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease).
 
+## Running the Application
+
+To run the application locally you can use: `flask --app main.py run`
+
 ## Data
 
 ### Source
