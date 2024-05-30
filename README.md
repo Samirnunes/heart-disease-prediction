@@ -55,7 +55,7 @@ The notebook `data_analysis.ipynb` shows an initial data analysis used to unders
 The correlations heatmap is showed below:
 
 <p align="center">
-    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
+    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
 <p>
 
 Besides, the target's class distribution is:
