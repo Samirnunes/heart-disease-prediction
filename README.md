@@ -1,7 +1,7 @@
 # Heart Disease Prediction 
 
 <p align="center">
-    <img width="300" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
+    <img width="400" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
 <p>
 
 Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease).
@@ -55,12 +55,12 @@ The notebook `data_analysis.ipynb` shows an initial data analysis used to unders
 The correlations heatmap is showed below:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
+    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
 <p>
 
 Besides, the target's class distribution is:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/target_distribuition.png" alt="Material Bread logo">
+    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/target_distribuition.png" alt="Material Bread logo">
 <p>
 
