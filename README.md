@@ -8,7 +8,7 @@ Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is
 
 ## Running the Application
 
-To run the application locally you can use: `flask --app main.py run`
+To run the application locally: `flask --app main.py run`
 
 ## Data
 
