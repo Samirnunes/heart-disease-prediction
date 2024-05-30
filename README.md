@@ -64,3 +64,51 @@ Besides, the target's class distribution is:
     <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/target_distribuition.png" alt="Material Bread logo">
 <p>
 
+### Preprocessing Pipeline
+
+The HdpDataPipeline class was created to function as a data preprocessing pipeline for the problem. It encapsulates the following operations:
+
+- Imputation of the mean for numerical variables;
+- Imputation of the mode for categorical variables;
+- Application of MinMaxScaler to scale the data to the [0, 1] range.
+
+When the pipeline is applied to data after fitting on the training set, it performs the following additional operations along with the previous ones:
+
+- Clipping the scaled feature values to the [0, 1] range;
+ Checking if at least 50% of the variables are provided for the pipeline; if not, an error is raised, requesting the filling of more values.
+
+Finally, during the model training (in the HdpModelTrainer class), oversampling is performed using SMOTE (Synthetic Minority Oversampling Technique) to balance the target classes.
+
+### Model Choice: Validation
+
+The validation of 5 models was carried out, which are listed below along with their parameters (using random_state = 100):
+
+- RandomForestClassifier(n_estimators=100, random_state=random_state, max_depth=3, max_leaf_nodes=10)
+- DecisionTreeClassifier(random_state=random_state, max_depth=3, max_leaf_nodes=10)
+- LogisticRegression()
+- SVC(probability=True, random_state=random_state)
+- XGBClassifier(random_state=random_state)
+
+The validation process involved checking the recall and precision histograms generated from 10 times the 10-fold cross-validation. The validation condition was that the mean minus one standard deviation must be at least greater than the minimum threshold considered (75% recall and 70% precision).
+
+It was found that the two models that passed validation were RandomForest and LogisticRegression.
+
+In the end, LogisticRegression was chosen as the model for deployment because it is less prone to overfitting, as also observed during the validation process. To analyze overfitting, the means of the metrics in the training folds were compared with the means of the metrics in the test fold.
+
+### Model Test
+
+After choosing LogisticRegression as the model, predictions were made on the test set, and the metrics were obtained, as shown below:
+
+- Precision: 0.85
+- Recall: 0.81
+
+These results are consistent with the performed validation.
+
+### Final Training and Deploy
+
+Finally, the model was trained on all 920 observations of the dataset and deployed on a web page created using Flask, HTML, and CSS. Prediction through the model is done via an endpoint named predict_heart_disease, which receives the values of each feature and returns 0 or 1 for the disease prediction.
+
+
+
+
+
