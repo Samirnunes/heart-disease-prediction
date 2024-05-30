@@ -1,7 +1,7 @@
 # Heart Disease Prediction 
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
+    <img width="300" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
 <p>
 
 Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease).
