@@ -4,11 +4,21 @@
     <img width="400" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
 <p>
 
-Heart disease prediction for CMC-16 (Data Science Practices) course. The goal is to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease).
+Heart disease prediction for CMC-16 (Data Science Practices) course.
 
 ## Running the Application
 
 To run the application locally: `flask --app main.py run`
+
+## Objectives
+
+### The Project
+
+The objective of this project is to create a machine learning model to predict the presence of heart disease in patients based in 13 patient's features associated to the clinical assessment moment, in order to assist doctors in clinical diagnosis. The target ("disease_degree" field) consists in an binary variable (0 - no disease; 1 - disease). Besides, the requirements include validating the model according to selected metrics and deploying it.
+
+### Metrics
+
+Regarding the metrics, it is proposed that the final model should achieve, on average, a minimum of 75% recall and 70% precision. Therefore, the model is expected to be primarily capable of avoiding false negatives. However, it should also avoid erroneously classifying too many patients as diseased.
 
 ## Data
 
@@ -35,16 +45,6 @@ The columns are:
 11. `slope`: the slope of the peak exercise ST segment -- Value 1: upsloping -- Value 2: flat -- Value 3: downsloping
 12. `ca`: number of major vessels (0-3) colored by flourosopy
 13. `thal`: 3 = normal; 6 = fixed defect; 7 = reversable defect
-
-## Objectives
-
-### The Project
-
-The objective of this project is to create a machine learning model to predict the presence of heart disease in patients, in order to assist doctors in clinical diagnosis, based on exam results. The requirements include validating the model according to selected metrics and deploying it.
-
-### Metrics
-
-Regarding the metrics, it is proposed that the final model should achieve, on average, a minimum of 75% recall and 70% precision. Therefore, the model is expected to be primarily capable of avoiding false negatives. However, it should also avoid erroneously classifying too many patients as diseased.
 
 ## Tools
 
