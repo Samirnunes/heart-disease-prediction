@@ -127,7 +127,7 @@ Finally, the model was trained on all 920 observations of the dataset and deploy
 The following image shows the application's user interface:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/user_interface.png" alt="Material Bread logo">
+    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/user_interface.png" alt="Material Bread logo">
 <p>
 
 
