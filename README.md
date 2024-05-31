@@ -8,9 +8,7 @@ Heart disease prediction project for CMC-16 (Data Science Practices) course.
 
 ## Report
 
-(in portuguese)
-
-- https://www.overleaf.com/read/psjkhdknknyg#c314ac
+- https://www.overleaf.com/read/psjkhdknknyg#c314ac (in portuguese)
 
 ## Running the Application
 
