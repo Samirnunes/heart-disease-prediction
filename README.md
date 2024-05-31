@@ -102,13 +102,13 @@ In the end, `LogisticRegression` was chosen as the model for deployment because 
 - `LogisticRegression` histograms:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_logistic_regression.png" alt="Material Bread logo">
+    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_logistic_regression.png" alt="Material Bread logo">
 <p>
 
 - `RandomForest` histograms:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_random_forest.png" alt="Material Bread logo">
+    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_random_forest.png" alt="Material Bread logo">
 <p>
 
 ### Model Test
