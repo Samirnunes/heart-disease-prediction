@@ -4,7 +4,7 @@
     <img width="400" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
 <p>
 
-Heart disease prediction for CMC-16 (Data Science Practices) course.
+Heart disease prediction project for CMC-16 (Data Science Practices) course.
 
 ## Running the Application
 
