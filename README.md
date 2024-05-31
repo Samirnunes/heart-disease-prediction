@@ -99,13 +99,13 @@ It was found that the two models that passed validation were `RandomForest` and 
 
 In the end, `LogisticRegression` was chosen as the model for deployment because it is less prone to overfitting, as also observed during the validation process. To analyze overfitting, the means of the metrics in the training folds were compared with the means of the metrics in the test fold.
 
-- `LogisticRegression` histogram:
+- `LogisticRegression` histograms:
 
 <p align="center">
     <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_logistic_regression.png" alt="Material Bread logo">
 <p>
 
-- `RandomForest` histogram:
+- `RandomForest` histograms:
 
 <p align="center">
     <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_random_forest.png" alt="Material Bread logo">
