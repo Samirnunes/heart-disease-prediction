@@ -79,7 +79,7 @@ The HdpDataPipeline class was created to function as a data preprocessing pipeli
 When the pipeline is applied to data after fitting on the training set, it performs the following additional operations along with the previous ones:
 
 - Clipping the scaled feature values to the [0, 1] range;
- Checking if at least 50% of the variables are provided for the pipeline; if not, an error is raised, requesting the filling of more values.
+- Checking if at least 50% of the variables are provided for the pipeline; if not, an error is raised, requesting the filling of more values.
 
 Finally, during the model training (in the HdpModelTrainer class), oversampling is performed using SMOTE (Synthetic Minority Oversampling Technique) to balance the target classes.
 
