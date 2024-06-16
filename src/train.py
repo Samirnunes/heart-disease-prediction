@@ -9,10 +9,11 @@ from xgboost import XGBClassifier
 from sklearn.metrics import recall_score, precision_score
 import pandas as pd
 import json
+from models import selected_model
 
 def train():
     random_state = 100
-    model = LogisticRegression()
+    model = selected_model
     name = "LogisticRegressionBase"
     
     X_train, X_test, y_train, y_test = import_heart_disease_data()
