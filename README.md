@@ -6,6 +6,10 @@
 
 Heart disease prediction project for CMC-16 (Data Science Practices) course.
 
+## Report
+
+- https://www.overleaf.com/read/psjkhdknknyg#c314ac (in portuguese)
+
 ## Running the Application
 
 To run the application locally: `flask --app main.py run`
