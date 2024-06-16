@@ -1,11 +1,6 @@
 from hdp_data_import import import_heart_disease_data
 from hdp_data_pipeline import HdpDataPipeline
 from hdp_model_trainer import HdpModelTrainer
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import SVC
-from xgboost import XGBClassifier
 from sklearn.metrics import recall_score, precision_score
 import pandas as pd
 import json
