@@ -38,6 +38,6 @@ class HdpModelTrainer():
         return None
     
     def __fit_resample(self, X_train, y_train):
-        X_train_oversampled, y_train_oversampled = \
+        X_train_over, y_train_over = \
             SMOTE(k_neighbors=5, random_state=self.__random_state).fit_resample(X_train, y_train)
-        return X_train_oversampled, y_train_oversampled
+        return X_train_over, y_train_over
