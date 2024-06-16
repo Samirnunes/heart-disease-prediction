@@ -1,0 +1,1 @@
+{"test_recall": 0.7482517482517482, "test_precision": 0.856, "train_recall": 0.8253012048192772, "train_precision": 0.8954248366013072}

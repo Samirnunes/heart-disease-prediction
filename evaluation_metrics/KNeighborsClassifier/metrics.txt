@@ -1,0 +1,1 @@
+{"mean_recall": 0.775918003565062, "std_recall": 0.06870324541037985, "mean_precision": 0.8392625886720474, "std_precision": 0.05217954435322394, "mean_train_recall": 0.8306219837938541, "mean_train_precision": 0.8852551544984089, "name": "KNeighborsClassifier"}
