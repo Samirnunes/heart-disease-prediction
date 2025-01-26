@@ -1,7 +1,7 @@
 # Heart Disease Prediction 
 
 <p align="center">
-    <img width="400" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/ilustration.jpg" alt="Material Bread logo">
+    <img width="400" src="./images/ilustration.jpg" alt="Material Bread logo">
 <p>
 
 Heart disease prediction project for CMC-16 (Data Science Practices) course.
@@ -63,13 +63,13 @@ The notebook `data_analysis.ipynb` shows an initial data analysis used to unders
 The correlations heatmap is showed below:
 
 <p align="center">
-    <img width="700" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/correlations.png" alt="Material Bread logo">
+    <img width="700" src="./images/correlations.png" alt="Material Bread logo">
 <p>
 
 Besides, the target's class distribution is:
 
 <p align="center">
-    <img width="500" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/target_distribuition.png" alt="Material Bread logo">
+    <img width="500" src="./images/target_distribuition.png" alt="Material Bread logo">
 <p>
 
 ### Preprocessing Pipeline
@@ -106,13 +106,13 @@ In the end, `LogisticRegression` was chosen as the model for deployment because 
 - `LogisticRegression` histograms:
 
 <p align="center">
-    <img width="600" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_logistic_regression.png" alt="Material Bread logo">
+    <img width="600" src="./images/recalls_precisions_hist_logistic_regression.png" alt="Material Bread logo">
 <p>
 
 - `RandomForest` histograms:
 
 <p align="center">
-    <img width="600" src="https://github.com/Samirnunes/heart-disease-prediction/blob/main/images/recalls_precisions_hist_random_forest.png" alt="Material Bread logo">
+    <img width="600" src="./images/recalls_precisions_hist_random_forest.png" alt="Material Bread logo">
 <p>
 
 ### Model Test
